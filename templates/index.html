@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+{% extends 'nav.html'%}
+
+{% load static%}
+
+<html>
+<head>
+	<title>blog home</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link type="text/css" rel="stylesheet" href="{%static 'bootstrap/dist/css/bootstrap.min.css'%}">
+</head>
+<body>
+	{% block body %}
+            
+         
+	
+	<div class="contaier-fluid">
+		<div class="row ">
+			{% for posts in post.all%}
+			
+				<div class="card col-md-4">
+					<div href="" class="card-block"><a href="post/{{posts.id}}">
+						<h4 class="card-title" >{{posts.title}}</h4></a>
+						<p class="catd-text">
+						{{posts.description}}</p>
+						
+					</div>
+					<div class="card-footer">
+						<p>{{posts.author.name}}</p>
+						<p class="text-right">{{posts.datepublished}}</p>
+					</div>
+				</div>	
+				
+		{% endfor %}
+		</div>
+		
+	</div>
+	   {% endblock body %}
+</body>
+</html>

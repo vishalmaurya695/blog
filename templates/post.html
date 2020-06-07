@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends 'nav.html'%}
+{% load static%}
+<html>
+<head>
+	<title>posts</title>
+
+</head>
+<body>
+	{% block body %}
+	
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10">
+					<h2>{{post.title}}</h2>
+
+				</div>
+				
+				<div class="row">
+				<div class="col-md-10">
+					<p>{{post.description}}</p>
+					<h5 class="text-right">published on {{post.datepublished}}</h5><br>
+					<h5 class="text-right"> By {{post.author.email}} </h5>					
+				</div>
+			</div>
+
+			<div class="container-fluid">
+				<form class="form" method="post" action="postid={{posts.id}}/submitcomment">
+					<div class="card">
+						<textarea rows="10" cols="5" name="commentbox" placeholder="feel free to write your feedback here about the post ....."></textarea>
+					</div>
+					<button class=" btn btn-primary" type="submit"> submit</button>
+				</form>
+				<h5>comments</h5>
+				
+				{% for comments in comments %}
+				<div class="col-md-10">
+					<p> {{comments.commentdescription}}</p>
+					<b><p class="text-right">by {{comments.user.email}}</p></b>
+					<b><p class="text-right">on {{comments.date}}</p></b>
+					
+				</div>
+
+				{% endfor %}
+				
+			</div>
+			
+		</div>
+
+	{% endblock body %}
+
+</body>
+</html>
